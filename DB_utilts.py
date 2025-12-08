@@ -6,7 +6,7 @@ import sqlite3
 def all_db_start():
     conn = sqlite3.connect('database.db')
     cursor = conn.cursor()
-    cursor.execute("""CREATE TABLE users IF NOT EXISTS
+    cursor.execute("""CREATE TABLE IF NOT EXISTS users 
                       (
                           id INTEGER PRIMARY KEY AUTOINCREMENT,
                           username TEXT UNIQUE NOT NULL,
@@ -16,7 +16,7 @@ def all_db_start():
                       );
                    """)
     conn.commit()
-    cursor.execute("""CREATE TABLE courses IF NOT EXISTS
+    cursor.execute("""CREATE TABLE IF NOT EXISTS courses
                       (
                           id          INTEGER PRIMARY KEY AUTOINCREMENT,
                           title       TEXT NOT NULL,
@@ -25,7 +25,7 @@ def all_db_start():
                       );
                    """)
     conn.commit()
-    cursor.execute("""CREATE TABLE lessons IF NOT EXISTS
+    cursor.execute("""CREATE TABLE IF NOT EXISTS lessons
                       (
                           id        INTEGER PRIMARY KEY AUTOINCREMENT,
                           course_id INTEGER,
@@ -36,7 +36,7 @@ def all_db_start():
                       );
                    """)
     conn.commit()
-    cursor.execute("""CREATE TABLE user_courses IF NOT EXISTS
+    cursor.execute("""CREATE TABLE IF NOT EXISTS user_courses
                       (
                           id               INTEGER PRIMARY KEY AUTOINCREMENT,
                           user_id          INTEGER,
@@ -49,7 +49,7 @@ def all_db_start():
                       );
                    """)
     conn.commit()
-    cursor.execute("""CREATE TABLE lesson_progress
+    cursor.execute("""CREATE TABLE IF NOT EXISTS lesson_progress
                       (
                           id           INTEGER PRIMARY KEY AUTOINCREMENT,
                           user_id      INTEGER,
@@ -63,9 +63,11 @@ def all_db_start():
                    """)
     conn.commit()
 
-def get_db_conn(db_name: str):
-    conn = sqlite3.connect(db_name)
+
+def get_db_conn():
+    conn = sqlite3.connect("database.db")
     conn.row_factory = sqlite3.Row
+    conn.execute("PRAGMA foreign_keys = ON;")
     return conn
 
 
