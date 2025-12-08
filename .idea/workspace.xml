@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f23a800f-c580-4d1c-8e39-e6fb2d90388d" name="Changes" comment="1" />
+    <list default="true" id="f23a800f-c580-4d1c-8e39-e6fb2d90388d" name="Changes" comment="Основні файли" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -31,7 +31,6 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory"><![CDATA[{
@@ -92,7 +91,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1765223104728</updated>
-      <workItem from="1765223105791" duration="1690000" />
+      <workItem from="1765223105791" duration="388000" />
     </task>
     <task id="LOCAL-00001" summary="Основні файли">
       <option name="closed" value="true" />
@@ -102,39 +101,7 @@
       <option name="project" value="LOCAL" />
       <updated>1765223294439</updated>
     </task>
-    <task id="LOCAL-00002" summary="Основні файли">
-      <option name="closed" value="true" />
-      <created>1765223685600</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1765223685600</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Основні файли">
-      <option name="closed" value="true" />
-      <created>1765224428137</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1765224428137</updated>
-    </task>
-    <task id="LOCAL-00004" summary="1">
-      <option name="closed" value="true" />
-      <created>1765224474347</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1765224474347</updated>
-    </task>
-    <task id="LOCAL-00005" summary="1">
-      <option name="closed" value="true" />
-      <created>1765224506928</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1765224506928</updated>
-    </task>
-    <option name="localTasksCounter" value="6" />
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -142,7 +109,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Основні файли" />
-    <MESSAGE value="1" />
-    <option name="LAST_COMMIT_MESSAGE" value="1" />
+    <option name="LAST_COMMIT_MESSAGE" value="Основні файли" />
   </component>
 </project>
