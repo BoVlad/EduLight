@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f23a800f-c580-4d1c-8e39-e6fb2d90388d" name="Changes" comment="Основні файли" />
+    <list default="true" id="f23a800f-c580-4d1c-8e39-e6fb2d90388d" name="Changes" comment="Основні файли">
+      <change beforePath="$PROJECT_DIR$/filetest" beforeDir="false" afterPath="$PROJECT_DIR$/filetest" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -31,6 +33,7 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory"><![CDATA[{
@@ -91,7 +94,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1765223104728</updated>
-      <workItem from="1765223105791" duration="1049000" />
+      <workItem from="1765223105791" duration="1350000" />
     </task>
     <task id="LOCAL-00001" summary="Основні файли">
       <option name="closed" value="true" />
@@ -109,7 +112,15 @@
       <option name="project" value="LOCAL" />
       <updated>1765223685600</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Основні файли">
+      <option name="closed" value="true" />
+      <created>1765224428137</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1765224428137</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
