@@ -16,8 +16,8 @@ style.css
     <div class="container">
         <div class="search box">Назва гуртка, автор або предмет</div>
 <!--        Тут команда з пошуком-->
-        <div class="language box">Вибір мови</div>
-<!--        Тут треба зробити мову на вибір-->
+        <div class="kategory box">Категорія курсу</div>
+<!--        Тут треба зробити курсу на вибір-->
         <div class="certificate box">без/з сертифікатами</div>
 <!--        (Тут треба зробити що б можна було вибрати(галочка))-->
         <div class="free box">Безкоштовні</div>
@@ -25,4 +25,4 @@ style.css
         <div class="button box">Шукати</div>
 <!--        (Сюди треба вставити кнопку)-->
     </div>
-    <h1></h1>
+    <h1>Онлайн-курси</h1>
