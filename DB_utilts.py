@@ -20,7 +20,9 @@ def all_db_start():
                       (
                           id          INTEGER PRIMARY KEY AUTOINCREMENT,
                           title       TEXT NOT NULL,
-                          description TEXT,
+                          description TEXT NOT NULL,
+                          modules_quantity INTEGER NOT NULL
+                              CHECK (modules_quantity >= 1 AND modules_quantity <= 24),
                           created_at  TEXT DEFAULT CURRENT_TIMESTAMP
                       );
                    """)
@@ -30,9 +32,10 @@ def all_db_start():
                           id        INTEGER PRIMARY KEY AUTOINCREMENT,
                           course_id INTEGER,
                           title     TEXT NOT NULL,
-                          content   TEXT,
-                          position  INTEGER,
-                          FOREIGN KEY (course_id) REFERENCES courses (id)
+                          content   TEXT NOT NULL,
+                          module_id INTEGER NOT NULL
+                              CHECK (module_id >= 1 AND module_id <= 24),
+                          FOREIGN KEY (course_id) REFERENCES courses (id),
                       );
                    """)
     conn.commit()
@@ -54,7 +57,8 @@ def all_db_start():
                           id           INTEGER PRIMARY KEY AUTOINCREMENT,
                           user_id      INTEGER,
                           lesson_id    INTEGER,
-                          is_completed INTEGER DEFAULT 0,
+                          is_completed INTEGER DEFAULT 0 NOT NULL
+                              CHECK (is_completed IN (0,1)),
                           score        INTEGER,
                           completed_at TEXT,
                           FOREIGN KEY (user_id) REFERENCES users (id),
@@ -69,6 +73,7 @@ def get_db_conn():
     conn.row_factory = sqlite3.Row
     conn.execute("PRAGMA foreign_keys = ON;")
     return conn
+
 
 
 
