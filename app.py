@@ -8,6 +8,20 @@ app.config['SECRET_KEY'] = "3D=79PaD+<SP9yU8;jGZ=z?u4Ow"
 all_db_start()
 
 
-# @app.route('/')
-# def index():
-#     return render_template('/home')
+@app.get("/")
+def index():
+    # return render_template('/home')
+    pass
+
+
+
+@app.get("/login")
+def get_login():
+    return render_template("login.html")
+
+@app.post("/login")
+def post_login():
+    action = request.form.get("action")
+    if action == "login":
+        username = request.form.get("username")
+        password = request.form.get("password")
