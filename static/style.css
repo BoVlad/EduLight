@@ -1,3 +1,30 @@
-h1 {
+.container {
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-around;
+}
 
+.box {
+    font-size: 30px;
+    padding: 20px;
+}
+
+.search {
+
+}
+
+.language {
+
+}
+
+.certificate {
+
+}
+
+.free{
+
+}
+
+.button{
+    background-color: green;
 }
