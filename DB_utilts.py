@@ -1,4 +1,5 @@
 import sqlite3
+import bcrypt
 
 # conn = sqlite3.connect("my_database.db")
 # cursor = conn.cursor()
@@ -10,7 +11,7 @@ def all_db_start():
                       (
                           id INTEGER PRIMARY KEY AUTOINCREMENT,
                           username TEXT UNIQUE NOT NULL,
-                          email TEXT UNIQUE,
+                          email TEXT UNIQUE NOT NULL,
                           password_hash TEXT NOT NULL,
                           created_at TEXT DEFAULT CURRENT_TIMESTAMP
                       );
@@ -35,7 +36,7 @@ def all_db_start():
                           content   TEXT NOT NULL,
                           module_id INTEGER NOT NULL
                               CHECK (module_id >= 1 AND module_id <= 24),
-                          FOREIGN KEY (course_id) REFERENCES courses (id),
+                          FOREIGN KEY (course_id) REFERENCES courses (id)
                       );
                    """)
     conn.commit()
@@ -73,6 +74,17 @@ def get_db_conn():
     conn.row_factory = sqlite3.Row
     conn.execute("PRAGMA foreign_keys = ON;")
     return conn
+
+
+def check_user_in_db(username: str, password: str) -> bool:
+    conn = get_db_conn()
+    cursor = conn.cursor()
+    cursor.execute("SELECT username, hashed_password FROM users WHERE username = ?", (username,))
+
+    username_db = cursor.fetchone()["username"]
+    password_db = cursor.fetchone()["password_hash"]
+
+    return bcrypt.checkpw(password.encode('utf-8'), password_db) and username == username_db
 
 
 
