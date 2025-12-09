@@ -8,7 +8,7 @@
 </head>
 <body>
     <nav class="navbar navbar-light bg-light px-3">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="/stoce">
             <img src="static/images/EduLightLogo.png" alt="" width="50" height="50">
         </a>
 
@@ -22,9 +22,11 @@
             <input class="form-control me-2" type="search" placeholder="Пошук" aria-label="Пошук" name="q">
             <button class="btn btn-outline-success" type="submit" name="action" value="search">Знайти</button>
         </form>
-        <form class="d-flex ms-auto" method="GET" action="/search">
-            <button class="btn btn btn-primary me-2" type="submit" name="action" value="login">Вхід</button>
-            <button class="btn btn-outline-primary" type="submit" name="action" value="register">Реєстрація</button>
+        <form class="d-flex ms-auto" method="GET">
+            <a href="/login" class="btn btn btn-primary me-2" type="submit">Вхід</a>
+            <a href="/register" class="btn btn-outline-primary" type="submit">Реєстрація</a>
+<!--            <button class="btn btn btn-primary me-2" type="submit" name="action" value="login">Вхід</button>-->
+<!--            <button class="btn btn-outline-primary" type="submit" name="action" value="register">Реєстрація</button>-->
         </form>
     </nav>
 </body>

@@ -27,8 +27,7 @@ def login_required(f):
 
 @app.get("/")
 def index():
-    # return render_template('/home')
-    pass
+    return render_template("index.html")
 
 @app.get("/register")
 def get_register():
@@ -56,3 +55,9 @@ def post_login():
     elif action == "register":
         return redirect(url_for("get_register"))
     return None
+
+
+
+
+if __name__ == '__main__':
+    app.run(debug=True, port=2738)
