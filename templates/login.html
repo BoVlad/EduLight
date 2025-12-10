@@ -1,46 +1,47 @@
 {% extends "base.html" %}
 
+{% block body_class %}bg2-img{% endblock %}
+
 {% block content %}
-<div>
-    <div class="border border-2 border-primary card p-3 mt-3 mx-auto strong-shadow" style="max-width: 500px;">
-        <div class="card-body">
-            <div class="container mt-5" style="max-width: 500px;">
-                <h1 class="mb-4 text-center">PyDiary</h1>
-                {% with messages = get_flashed_messages(with_categories=true) %}
-                {% if messages %}
-                    <div class="mb-3">
-                    {% for category, message in messages %}
-                        <div class="alert alert-{{ category }}" role="alert">
-                        {{ message }}
-                        </div>
+<div class="border border-2 border-primary card p-3 mt-3 mx-auto strong-shadow" style="max-width: 500px;">
+    <div class="card-body">
+        <div class="container mt-5" style="max-width: 500px;">
+            <h1 class="mb-4 text-center">Вхід</h1>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="mb-3">
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}" role="alert">
+                    {{ message }}
+                    </div>
+                {% endfor %}
+                </div>
+            {% endif %}
+            {% endwith %}
+
+            <form method="POST">
+                {{ form.hidden_tag() }}
+
+                <div class="mb-3">
+                    {{ form.email.label(class="form-label") }}
+                    {{ form.email(class="form-control", placeholder="Введіть електронну пошту") }}
+                    {% for error in form.email.errors %}
+                        <div class="text-danger small">{{ error }}</div>
                     {% endfor %}
-                    </div>
-                {% endif %}
-                {% endwith %}
+                </div>
 
-                <form method="POST">
-                    {{ form.hidden_tag() }}
+                <div class="mb-3">
+                    {{ form.password.label(class="form-label") }}
+                    {{ form.password(class="form-control", placeholder="Введіть пароль") }}
+                    {% for error in form.password.errors %}
+                        <div class="text-danger small">{{ error }}</div>
+                    {% endfor %}
+                </div>
 
-                    <div class="mb-3">
-                        {{ form.email.label(class="form-label") }}
-                        {{ form.email(class="form-control", placeholder="Введіть email") }}
-                        {% for error in form.email.errors %}
-                            <div class="text-danger small">{{ error }}</div>
-                        {% endfor %}
-                    </div>
-
-                    <div class="mb-3">
-                        {{ form.password.label(class="form-label") }}
-                        {{ form.password(class="form-control", placeholder="Введіть пароль") }}
-                        {% for error in form.password.errors %}
-                            <div class="text-danger small">{{ error }}</div>
-                        {% endfor %}
-                    </div>
-
-                    {{ form.submit(class="btn btn-primary w-100") }}
-                </form>
-            </div>
+                {{ form.submit(class="btn btn-primary w-100") }}
+            </form>
         </div>
     </div>
 </div>
+
 {% endblock %}
