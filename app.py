@@ -1,5 +1,6 @@
 import sqlite3
 import bcrypt
+import random
 
 from flask import *
 from functools import wraps
@@ -18,7 +19,7 @@ def login_required(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
         if "user_id" not in session:
-            return redirect(url_for("index"))  # перекидываем на главную
+            return redirect(url_for("index"))
         return f(*args, **kwargs)
     return decorated_function
 
@@ -27,7 +28,20 @@ def login_required(f):
 
 @app.get("/")
 def index():
-    return render_template("index.html")
+    # courses = [{"img": "static/images/Python.png", "title": "Python", "description": "Python курс"},
+    #            {"img": "static/images/WEB.png", "title": "WEB", "description": "WEB курс: HTML + CSS + JS"},
+    #            {"img": "static/images/C++.png", "title": "C++", "description": "C++ курс"},
+    #            {"img": "static/images/C++.png", "title": "C++", "description": "C++ курс"}]
+    conn = get_db_conn()
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM courses")
+    data = cursor.fetchall()
+    courses_quantity = min(4, len(data))
+    courses = random.sample(data, k=courses_quantity)
+    conn.close()
+    return render_template("index.html", courses=courses)
+
+
 
 @app.get("/register")
 def get_register():

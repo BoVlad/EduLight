@@ -5,9 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f23a800f-c580-4d1c-8e39-e6fb2d90388d" name="Changes" comment="1">
+      <change afterPath="$PROJECT_DIR$/DB_init_files_python_course.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/BG.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/BG2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/C++.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/Csharp.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/Java.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/Python.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/WEB.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test2.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB_utilts.py" beforeDir="false" afterPath="$PROJECT_DIR$/DB_utilts.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ForSaveCode" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/scripts/script1.js" beforeDir="false" afterPath="$PROJECT_DIR$/DB_init_files_TEMP.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,6 +82,9 @@
     "JavaScript Debug.index.html.executor": "Run",
     "JavaScript Debug.test.html.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python.DB_init_files_TEMP.executor": "Run",
+    "Python.DB_init_files_python_course.executor": "Run",
+    "Python.DB_utilts.executor": "Run",
     "Python.app.executor": "Run",
     "Python.test.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -121,7 +140,9 @@
       <workItem from="1765223105791" duration="1690000" />
       <workItem from="1765294707780" duration="428000" />
       <workItem from="1765295323066" duration="6598000" />
-      <workItem from="1765301975702" duration="3877000" />
+      <workItem from="1765301975702" duration="3909000" />
+      <workItem from="1765386114558" duration="312000" />
+      <workItem from="1765386824871" duration="12607000" />
     </task>
     <task id="LOCAL-00001" summary="Основні файли">
       <option name="closed" value="true" />
@@ -267,7 +288,15 @@
       <option name="project" value="LOCAL" />
       <updated>1765312838430</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="1">
+      <option name="closed" value="true" />
+      <created>1765313239772</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1765313239772</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -290,7 +319,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="1" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/EduLight$DB_init_files_python_course.coverage" NAME="DB_init_files_python_course Coverage Results" MODIFIED="1765396785260" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/EduLight$test.coverage" NAME="test Coverage Results" MODIFIED="1765300271974" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/EduLight$app.coverage" NAME="app Coverage Results" MODIFIED="1765313164405" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/EduLight$app.coverage" NAME="app Coverage Results" MODIFIED="1765401387263" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/EduLight$DB_utilts.coverage" NAME="DB_utilts Coverage Results" MODIFIED="1765396686656" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/EduLight$DB_init_files_TEMP.coverage" NAME="DB_init_files_TEMP Coverage Results" MODIFIED="1765401371548" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

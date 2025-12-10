@@ -21,10 +21,23 @@ def all_db_start():
                       (
                           id          INTEGER PRIMARY KEY AUTOINCREMENT,
                           title       TEXT NOT NULL,
+                          description_short TEXT NOT NULL,
                           description TEXT NOT NULL,
+                          img TEXT NOT NULL,
                           modules_quantity INTEGER NOT NULL
                               CHECK (modules_quantity >= 1 AND modules_quantity <= 24),
                           created_at  TEXT DEFAULT CURRENT_TIMESTAMP
+                      );
+                   """)
+    conn.commit()
+    cursor.execute("""CREATE TABLE IF NOT EXISTS modules
+                      (
+                          id          INTEGER PRIMARY KEY AUTOINCREMENT,
+                          course_id INTEGER,
+                          title       TEXT NOT NULL,
+                          module_number INTEGER NOT NULL
+                              CHECK (module_number >= 1 AND module_number <= 24),
+                          FOREIGN KEY (course_id) REFERENCES courses (id)
                       );
                    """)
     conn.commit()
@@ -32,11 +45,14 @@ def all_db_start():
                       (
                           id        INTEGER PRIMARY KEY AUTOINCREMENT,
                           course_id INTEGER,
+                          module_number INTEGER,
                           title     TEXT NOT NULL,
                           content   TEXT NOT NULL,
                           module_id INTEGER NOT NULL
                               CHECK (module_id >= 1 AND module_id <= 24),
-                          FOREIGN KEY (course_id) REFERENCES courses (id)
+                          FOREIGN KEY (course_id) REFERENCES courses (id),
+                          FOREIGN KEY (module_id) REFERENCES modules (id),
+                          FOREIGN KEY (module_number) REFERENCES modules (module_number)
                       );
                    """)
     conn.commit()

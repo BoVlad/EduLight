@@ -1,16 +1,7 @@
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-
-.container {
-    border: 1px solid black;
-    display: flex;
-    justify-content: space-around;
-}
-
-.box {
-    font-size: 30px;
-    padding: 20px;
+.bg-img {
+    background-image: url('images/BG2.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
