@@ -39,7 +39,7 @@ def index():
     courses_quantity = min(4, len(data))
     courses = random.sample(data, k=courses_quantity)
     conn.close()
-    return render_template("index.html", courses=courses)
+    return render_template("index2.html", courses=courses)
 
 
 
