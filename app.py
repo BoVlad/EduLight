@@ -72,11 +72,8 @@ def post_login():
         password_form = form.password.data
         if check_user_in_db(email_form, password_form):
             session["user_email"] = email_form
-
-
             return redirect(url_for("index"))
     return render_template('index.html', form=form)
-
 
 
 
