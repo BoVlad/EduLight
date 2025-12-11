@@ -102,8 +102,21 @@ def check_user_in_db(email: str, password: str):
     if password_db is None:
         return None
     password_db = password_db["password_hash"]
-    return bcrypt.checkpw(password.encode('utf-8'), password_db)
+    return bcrypt.checkpw(password.encode('utf-8'), password_db.lower())
 
+def add_user_to_db(username: str, email: str, password: str):
+    conn = get_db_conn()
+    cursor = conn.cursor()
+    password = password.lower()
+
+    salt = bcrypt.gensalt()
+    password_input_hashed = bcrypt.hashpw(password.encode('utf-8'), salt)
+
+    cursor.execute("""INSERT INTO users (username, email, password_hash)
+                      VALUES (?, ?, ?)""",
+                   (username, email, password_input_hashed))
+    conn.commit()
+    conn.close()
 
 
 

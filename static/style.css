@@ -14,7 +14,32 @@
     background-attachment: fixed;
 }
 
+.bg3-img {
+    background-image: url('images/BG3.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.bg4-img {
+    background-image: url('images/BG4.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
 
 .strong-shadow {
     box-shadow: 0 6px 30px rgba(0,0,0,0.55);
+}
+
+.glass-container {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    padding: 25px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 }

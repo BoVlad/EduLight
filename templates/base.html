@@ -26,15 +26,23 @@
                 </button>
                 <ul class="dropdown-menu p-3">
                     <li><label class="dropdown-item">
-                        <input type="checkbox" name="filters" value="math"> Python
+                        <input type="checkbox" name="filters" value="Python"> Python
                     </label></li>
 
                     <li><label class="dropdown-item">
-                        <input type="checkbox" name="filters" value="physics"> WEB
+                        <input type="checkbox" name="filters" value="WEB"> WEB
                     </label></li>
 
                     <li><label class="dropdown-item">
-                        <input type="checkbox" name="filters" value="programming"> C++
+                        <input type="checkbox" name="filters" value="C++"> C++
+                    </label></li>
+
+                    <li><label class="dropdown-item">
+                        <input type="checkbox" name="filters" value="Csharp"> C#
+                    </label></li>
+
+                    <li><label class="dropdown-item">
+                        <input type="checkbox" name="filters" value="Java"> Java
                     </label></li>
                 </ul>
             </div>
@@ -44,7 +52,7 @@
 
         {% if user_logined %}
             <form class="d-flex ms-auto" method="GET">
-                <a href="/login" class="btn btn btn-primary me-2" type="submit">Профіль</a>
+                <a href="/profile" class="btn btn btn-primary me-2" type="submit">Профіль</a>
     <!--            <button class="btn btn btn-primary me-2" type="submit" name="action" value="login">Вхід</button>-->
     <!--            <button class="btn btn-outline-primary" type="submit" name="action" value="register">Реєстрація</button>-->
             </form>
