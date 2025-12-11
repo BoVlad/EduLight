@@ -51,8 +51,20 @@ def index():
     return render_template("index.html", courses=courses, user_logined=user_in_session())
 
 @app.get("/profile")
-def profile():
+@login_required
+def get_profile():
+    conn = get_db_conn()
+    cursor = conn.cursor()
+    cursor.execute("SELECT username FROM users WHERE email = ?", (session["user_email"],))
+    username = cursor.fetchone()[0]
+    conn.close()
+    return render_template("profile.html", username=username)
 
+@app.post("/profile")
+@login_required
+def post_profile():
+    session["user_email"] = None
+    return redirect(url_for("index"))
 
 
 
@@ -79,7 +91,6 @@ def post_register():
         if check_user is None:
             add_user_to_db(username, email_form, password_form)
             session["user_email"] = email_form
-            flash(f"Реєстрація успішна! Вітаємо, {username}", "info")
             return redirect(url_for("index"))
         if check_user:
             error = "Такий користувач вже існує!"
@@ -92,7 +103,7 @@ def get_login():
     form = LoginForm()
     return render_template("login.html", form=form)
 
-@app.post("/login")
+@app.post("/login") #TODO не работает логин с testuser!
 @login_forbidden
 def post_login():
     form = LoginForm()
@@ -102,7 +113,6 @@ def post_login():
         check_user = check_user_in_db(email_form, password_form)
         if check_user:
             session["user_email"] = email_form
-            flash(f"Авторизація успішна!", "info")
             return redirect(url_for("index"))
         if check_user is None:
             error = "Неправильна пошта або пароль"
