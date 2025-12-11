@@ -92,15 +92,17 @@ def get_db_conn():
     return conn
 
 
-def check_user_in_db(email: str, password: str) -> bool:
+def check_user_in_db(email: str, password: str):
     conn = get_db_conn()
     cursor = conn.cursor()
-    cursor.execute("SELECT username, hashed_password FROM users WHERE email = ?", (email,))
+    email = email.lower()
+    cursor.execute("SELECT password_hash FROM users WHERE email = ?", (email,))
 
-    email_db = cursor.fetchone()["email"]
-    password_db = cursor.fetchone()["password_hash"]
-
-    return bcrypt.checkpw(password.encode('utf-8'), password_db) and email_db == email
+    password_db = cursor.fetchone()
+    if password_db is None:
+        return None
+    password_db = password_db["password_hash"]
+    return bcrypt.checkpw(password.encode('utf-8'), password_db)
 
 
 

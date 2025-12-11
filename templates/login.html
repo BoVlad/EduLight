@@ -18,6 +18,9 @@
                 </div>
             {% endif %}
             {% endwith %}
+            {% if error %}
+                <div class="text-danger small">{{ error }}</div>
+            {% endif %}
 
             <form method="POST">
                 {{ form.hidden_tag() }}

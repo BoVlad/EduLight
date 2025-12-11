@@ -70,10 +70,14 @@ def post_login():
     if form.validate_on_submit():
         email_form = form.email.data
         password_form = form.password.data
-        if check_user_in_db(email_form, password_form):
+        check_user = check_user_in_db(email_form, password_form)
+        if check_user:
             session["user_email"] = email_form
             return redirect(url_for("index"))
-    return render_template('index.html', form=form)
+        if check_user is None:
+            error = "Неправильна пошта або пароль"
+            return render_template('login.html', form=form, error=error)
+    return render_template('login.html', form=form)
 
 
 

@@ -1,4 +1,5 @@
 import sqlite3
+import bcrypt
 
 def db_init_courses_temp():
     conn = sqlite3.connect('database.db')
@@ -43,5 +44,18 @@ def db_init_courses_temp():
     conn.commit()
     conn.close()
 
+
+def db_init_user_admin():
+    conn = sqlite3.connect('database.db')
+    cursor = conn.cursor()
+
+    salt = bcrypt.gensalt()
+    password_input_hashed = bcrypt.hashpw("AdminOnDebug".encode('utf-8'), salt)
+
+    cursor.execute("""INSERT INTO users (username, email, password_hash) VALUES (?, ?, ?)""",
+                   ('Admin', 'admin@gmail.com', password_input_hashed))
+    conn.commit()
+    conn.close()
+
 if __name__ == "__main__":
-    db_init_courses_temp()
+    pass
