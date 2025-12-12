@@ -121,21 +121,61 @@ def add_user_to_db(username: str, email: str, password: str):
     conn.commit()
     conn.close()
 
+# def get_search_from_db(q: str, filters: list[str]):
+#     conn = get_db_conn()
+#     cursor = conn.cursor()
+#     filter_search_text = f"%{q}%"
+#
+#
+#     cursor.execute("""
+#                 SELECT id, title, description_short FROM courses
+#                 WHERE title LIKE ? COLLATE NOCASE AND title LIKE ? COLLATE NOCASE
+#                    OR description_short LIKE ? COLLATE NOCASE and description_short LIKE ? COLLATE NOCASE
+#                 ORDER BY id DESC LIMIT 50
+#                 """, (filter_search_text, filters, filter_search_text, filters))
+#     searched_info = cursor.fetchall()
+#     conn.close()
+#     return searched_info
+
 def get_search_from_db(q: str, filters: list[str]):
     conn = get_db_conn()
     cursor = conn.cursor()
-    filter_search_text = f"%{q}%"
 
+    sql = "SELECT id, title, description_short, img FROM courses"
+    params = []
+    conditions = []
 
-    cursor.execute("""
-                SELECT id, title, description_short FROM courses
-                WHERE title LIKE ? COLLATE NOCASE AND title LIKE ? COLLATE NOCASE
-                   OR description_short LIKE ? COLLATE NOCASE and description_short LIKE ? COLLATE NOCASE
-                ORDER BY id DESC LIMIT 50
-                """, (filter_search_text, filters, filter_search_text, filters))
-    searched_info = cursor.fetchall()
+    if filters:
+        or_parts = []
+        for f in filters:
+            f = f.strip()
+            if not f:
+                continue
+            like = f"%{f}%"
+            or_parts.append("(title LIKE ? COLLATE NOCASE OR description_short LIKE ? COLLATE NOCASE)")
+            params.extend([like, like])
+
+        if or_parts:
+            conditions.append("(" + " OR ".join(or_parts) + ")")
+
+    q = q.strip()
+    if q:
+        like = f"%{q}%"
+        conditions.append("(title LIKE ? COLLATE NOCASE OR description_short LIKE ? COLLATE NOCASE)")
+        params.extend([like, like])
+
+    if conditions:
+        sql += " WHERE " + " AND ".join(conditions)
+
+    sql += " ORDER BY id DESC LIMIT 50"
+
+    cursor.execute(sql, params)
+    rows = cursor.fetchall()
     conn.close()
-    return searched_info
+    return rows
+
+
+
 
 
 
