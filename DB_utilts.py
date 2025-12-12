@@ -121,17 +121,18 @@ def add_user_to_db(username: str, email: str, password: str):
     conn.commit()
     conn.close()
 
-def get_search_from_db(q: str):
+def get_search_from_db(q: str, filters: list[str]):
     conn = get_db_conn()
     cursor = conn.cursor()
-    pattern = f"%{q}%"
+    filter_search_text = f"%{q}%"
+
 
     cursor.execute("""
                 SELECT id, title, description_short FROM courses
-                WHERE title LIKE ? COLLATE NOCASE
-                   OR description_short LIKE ? COLLATE NOCASE
+                WHERE title LIKE ? COLLATE NOCASE AND title LIKE ? COLLATE NOCASE
+                   OR description_short LIKE ? COLLATE NOCASE and description_short LIKE ? COLLATE NOCASE
                 ORDER BY id DESC LIMIT 50
-                """, (pattern, pattern))
+                """, (filter_search_text, filters, filter_search_text, filters))
     searched_info = cursor.fetchall()
     conn.close()
     return searched_info

@@ -29,12 +29,13 @@ def index():
 @app.get("/search")
 def search():
     q = request.args.get("q", default="", type=str)
-    return {
-        "q": q,
-        "len": len(q),
-    }
+    filters = request.form.getlist("filters")
+    courses = get_search_from_db(q, filters)
+    return render_template("search.html", courses=courses, user_logined=user_in_session())
 
-
+@app.get("/courses/<int:cid>")
+def course_detail(cid):
+    pass
 
 @app.get("/profile")
 @login_required
