@@ -3,40 +3,16 @@ import bcrypt
 import random
 
 from flask import *
-from functools import wraps
-from DB_utilts import all_db_start, get_db_conn, check_user_in_db, add_user_to_db
+from DB_utilts import all_db_start, get_db_conn, check_user_in_db, add_user_to_db, get_search_from_db
 from datetime import timedelta
 from forms import LoginForm, RegisterForm
+from session_utilts import login_required, login_forbidden, user_in_session
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "3D=79PaD+<SP9yU8;jGZ=z?u4Ow"
 app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(days=2)
 
 all_db_start()
-
-
-def login_required(f):
-    @wraps(f)
-    def decorated_function(*args, **kwargs):
-        if session.get("user_email") is None:
-            return redirect(url_for("index"))
-        return f(*args, **kwargs)
-    return decorated_function
-
-def login_forbidden(f):
-    @wraps(f)
-    def decorated_function(*args, **kwargs):
-        if session.get("user_email") is not None:
-            return redirect(url_for("index"))
-        return f(*args, **kwargs)
-    return decorated_function
-
-
-def user_in_session():
-    if session.get("user_email") is None:
-        return False
-    else:
-        return True
 
 
 @app.get("/")
@@ -49,6 +25,16 @@ def index():
     courses = random.sample(data, k=courses_quantity)
     conn.close()
     return render_template("index.html", courses=courses, user_logined=user_in_session())
+
+@app.get("/search")
+def search():
+    q = request.args.get("q", default="", type=str)
+    return {
+        "q": q,
+        "len": len(q),
+    }
+
+
 
 @app.get("/profile")
 @login_required
@@ -114,7 +100,7 @@ def post_login():
         if check_user:
             session["user_email"] = email_form
             return redirect(url_for("index"))
-        if check_user is None:
+        if check_user is None or not check_user:
             error = "Неправильна пошта або пароль"
             return render_template('login.html', form=form, error=error)
     return render_template('login.html', form=form)

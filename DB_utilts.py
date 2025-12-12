@@ -102,11 +102,14 @@ def check_user_in_db(email: str, password: str):
     if password_db is None:
         return None
     password_db = password_db["password_hash"]
-    return bcrypt.checkpw(password.encode('utf-8'), password_db.lower())
+    return bcrypt.checkpw(password.lower().encode('utf-8'), password_db)
 
 def add_user_to_db(username: str, email: str, password: str):
     conn = get_db_conn()
     cursor = conn.cursor()
+
+    username = username.lower()
+    email = email.lower()
     password = password.lower()
 
     salt = bcrypt.gensalt()
@@ -117,6 +120,21 @@ def add_user_to_db(username: str, email: str, password: str):
                    (username, email, password_input_hashed))
     conn.commit()
     conn.close()
+
+def get_search_from_db(q: str):
+    conn = get_db_conn()
+    cursor = conn.cursor()
+    pattern = f"%{q}%"
+
+    cursor.execute("""
+                SELECT id, title, description_short FROM courses
+                WHERE title LIKE ? COLLATE NOCASE
+                   OR description_short LIKE ? COLLATE NOCASE
+                ORDER BY id DESC LIMIT 50
+                """, (pattern, pattern))
+    searched_info = cursor.fetchall()
+    conn.close()
+    return searched_info
 
 
 
