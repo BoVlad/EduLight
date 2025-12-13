@@ -117,4 +117,4 @@ def update_course():
     conn.close()
 
 if __name__ == "__main__":
-    update_course()
+    pass

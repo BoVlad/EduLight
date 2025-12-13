@@ -5,15 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f23a800f-c580-4d1c-8e39-e6fb2d90388d" name="Changes" comment="1">
-      <change afterPath="$PROJECT_DIR$/templates/courses.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DB_init_files_TEMP.py" beforeDir="false" afterPath="$PROJECT_DIR$/DB_init_files_TEMP.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DB_utilts.py" beforeDir="false" afterPath="$PROJECT_DIR$/DB_utilts.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database.db" beforeDir="false" afterPath="$PROJECT_DIR$/database.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/about.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/courses_preview.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/courses_preview.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -138,7 +130,7 @@
       <workItem from="1765386824871" duration="15300000" />
       <workItem from="1765480977092" duration="5831000" />
       <workItem from="1765570195809" duration="5909000" />
-      <workItem from="1765633816242" duration="4960000" />
+      <workItem from="1765633816242" duration="5265000" />
     </task>
     <task id="LOCAL-00001" summary="Основні файли">
       <option name="closed" value="true" />
@@ -372,7 +364,15 @@
       <option name="project" value="LOCAL" />
       <updated>1765574428563</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="1">
+      <option name="closed" value="true" />
+      <created>1765639755323</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1765639755323</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -398,8 +398,8 @@
     <SUITE FILE_PATH="coverage/EduLight$DB_init_files_python_course.coverage" NAME="DB_init_files_python_course Coverage Results" MODIFIED="1765396785260" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/EduLight$test.coverage" NAME="test Coverage Results" MODIFIED="1765300271974" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/EduLight$temp.coverage" NAME="temp Coverage Results" MODIFIED="1765482570288" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/EduLight$app.coverage" NAME="app Coverage Results" MODIFIED="1765639172316" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/EduLight$app.coverage" NAME="app Coverage Results" MODIFIED="1765639775132" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/EduLight$DB_utilts.coverage" NAME="DB_utilts Coverage Results" MODIFIED="1765396686656" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/EduLight$DB_init_files_TEMP.coverage" NAME="DB_init_files_TEMP Coverage Results" MODIFIED="1765639403970" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/EduLight$DB_init_files_TEMP.coverage" NAME="DB_init_files_TEMP Coverage Results" MODIFIED="1765639701205" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
