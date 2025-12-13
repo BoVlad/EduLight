@@ -3,7 +3,8 @@ import bcrypt
 import random
 
 from flask import *
-from DB_utilts import all_db_start, get_db_conn, check_user_in_db, add_user_to_db, get_search_from_db
+from DB_utilts import (all_db_start, get_db_conn, check_user_in_db, add_user_to_db, get_search_from_db,
+                       get_modules_by_course_id, get_course_by_id)
 from datetime import timedelta
 from forms import LoginForm, RegisterForm
 from session_utilts import login_required, login_forbidden, user_in_session
@@ -35,7 +36,9 @@ def search():
 
 @app.get("/courses/<int:cid>")
 def course_detail(cid):
-    pass
+    course = get_course_by_id(cid)
+    modules = get_modules_by_course_id(cid)
+    return render_template("courses_preview.html", user_logined=user_in_session(), course=course, modules=modules)
 
 @app.get("/profile")
 @login_required
@@ -90,7 +93,7 @@ def get_login():
     form = LoginForm()
     return render_template("login.html", form=form)
 
-@app.post("/login") #TODO не работает логин с testuser!
+@app.post("/login")
 @login_forbidden
 def post_login():
     form = LoginForm()

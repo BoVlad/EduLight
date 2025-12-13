@@ -57,5 +57,64 @@ def db_init_user_admin():
     conn.commit()
     conn.close()
 
+def update_course():
+    conn = sqlite3.connect('database.db')
+    cursor = conn.cursor()
+
+    cursor.execute(
+        "UPDATE courses SET title = ? WHERE id = ?",
+        ("Python для початківців", 1)
+    )
+    conn.commit()
+    cursor.execute(
+        "UPDATE courses SET title = ? WHERE id = ?",
+        ("C++ для початківців", 2)
+    )
+    conn.commit()
+    cursor.execute(
+        "UPDATE courses SET title = ? WHERE id = ?",
+        ("WEB (HTML + CSS + JS) для початківців", 3)
+    )
+    conn.commit()
+    cursor.execute(
+        "UPDATE courses SET title = ? WHERE id = ?",
+        ("Java для початківців", 4)
+    )
+    conn.commit()
+    cursor.execute(
+        "UPDATE courses SET title = ? WHERE id = ?",
+        ("Csharp для початківців", 5)
+    )
+    conn.commit()
+
+
+
+    cursor.execute(
+        "UPDATE courses SET img = ? WHERE id = ?",
+        ("Python.png", 1)
+    )
+    conn.commit()
+    cursor.execute(
+        "UPDATE courses SET img = ? WHERE id = ?",
+        ("C++.png", 2)
+    )
+    conn.commit()
+    cursor.execute(
+        "UPDATE courses SET img = ? WHERE id = ?",
+        ("WEB.png", 3)
+    )
+    conn.commit()
+    cursor.execute(
+        "UPDATE courses SET img = ? WHERE id = ?",
+        ("Java.png", 4)
+    )
+    conn.commit()
+    cursor.execute(
+        "UPDATE courses SET img = ? WHERE id = ?",
+        ("Csharp.png", 5)
+    )
+    conn.commit()
+    conn.close()
+
 if __name__ == "__main__":
-    pass
+    update_course()
