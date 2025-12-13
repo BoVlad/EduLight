@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block body_class %}bg3-img{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 col-md-3 sidebar p-3">
+            <div class="accordion" id="courseAccordion">
+                {% for module in modules %}
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed"
+                                    data-bs-target="#module{{ module.id }}"
+                                    data-bs-toggle="collapse">
+                                {{ module.title }}
+                            </button>
+                        </h2>
+                        <div class="accordion-collapse collapse" id="module{{ module.id }}">
+                            <div class="accordion-body p-0">
+                                <div class="d-grid gap-2">
+                                    {% for lesson in lessons["module.id"] %}
+                                        <a href="/course['id']/module['id']/lesson['id']"
+                                           class="btn btn-light btn-sm">{{ lesson.title }}
+                                        </a>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-12 col-md-9 rounded-0 container glass-container">
+            <h1 class="mb-4 text-center">{{ course["title"] }}</h1>
+            <h3 class="text-center">{{ lesson_main.title }}</h3>
+            <div class="content">
+                {{ lesson_main.content }}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

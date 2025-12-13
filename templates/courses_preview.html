@@ -11,10 +11,19 @@
         <img src="{{ url_for('static', filename='images/' ~ course['img']) }}" alt="" width="100" height="100">
     </div>
     <h1 class="mb-5 mt-4 text-center">{{ course["title"] }}</h1>
-    <p>{{ course["description"] }}</p>
-    <h3 class="mb-4 text-center">Структура проєкту</h3>
+    <p class="fs-5">{{ course["description"] }}</p>
+    <h2 class="mb-4 text-center">Структура проєкту</h2>
+    <ol>
     {% for i in modules %}
-        <p>{i["module_number"]}. {i["title"]}</p>
+        <li class="fs-4">{{ i["title"] }}</li>
     {% endfor %}
+    </ol>
+    <form class="ms-auto" method="GET">
+        {% if user_logined %}
+            <button class="btn btn-primary btn-lg mb-3 w-100" type="submit" name="action" value="new_course">Пройти курс</button>
+        {% else %}
+            <a href="/register" class="btn btn-primary btn-lg mb-3 w-100" type="submit">Пройти курс</a>
+        {% endif %}
+    </form>
 </div>
 {% endblock %}

@@ -52,18 +52,3 @@
   background-color: #f8f9fa;
   border-right: 1px solid #ddd;
 }
-
-/* ПРАВЫЙ КОНТЕНТ (просто для демонстрации скролла) */
-/*.content {*/
-/*  min-height: 2000px;*/
-/*}*/
-
-/* АДАПТАЦИЯ ПОД МОБИЛЬНЫЕ */
-@media (max-width: 768px) {
-  .sidebar {
-    position: static;
-    height: auto;
-    border-right: none;
-    border-bottom: 1px solid #ddd;
-  }
-}

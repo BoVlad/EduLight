@@ -83,6 +83,7 @@ def all_db_start():
                       );
                    """)
     conn.commit()
+    conn.close()
 
 
 def get_db_conn():
@@ -127,7 +128,6 @@ def get_course_by_id(course_id: int):
     cursor = conn.cursor()
     cursor.execute("SELECT * FROM courses WHERE id = ?", (course_id,))
     course = cursor.fetchone()
-    print(1, course)
     conn.close()
     return course
 
@@ -137,9 +137,53 @@ def get_modules_by_course_id(course_id: int):
     cursor = conn.cursor()
     cursor.execute("SELECT * FROM modules WHERE course_id = ?", (course_id,))
     modules = cursor.fetchall()
-    print(2, modules)
     conn.close()
     return modules
+
+
+def get_user_id_by_user_email(email: str):
+    conn = get_db_conn()
+    cursor = conn.cursor()
+    email = email.lower()
+    cursor.execute("SELECT id FROM users WHERE email = ?", (email,))
+    user_id = cursor.fetchone()
+    conn.close()
+    return user_id
+
+
+# def get_user_is_in_course(user_id: int, course_id: int):
+#     conn = get_db_conn()
+#     cursor = conn.cursor()
+#     cursor.execute("SELECT * FROM user_courses WHERE user_id = ? AND course_id = ?", (user_id, course_id))
+#     user_courses = cursor.fetchall()
+#     conn.close()
+#     return user_courses is not None
+
+def get_user_courses(user_id: int):
+    conn = get_db_conn()
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM user_courses WHERE user_id = ?", (user_id,))
+    user_courses = cursor.fetchall()
+    conn.close()
+    return user_courses
+
+def get_lessons_by_course_module_id(course_id: int, module_id: int):
+    conn = get_db_conn()
+    cursor = conn.cursor()
+    cursor.execute("""SELECT * FROM lessons WHERE course_id = ? AND module_id = ?""",
+                   (course_id, module_id))
+    lessons = cursor.fetchall()
+    conn.close()
+    return lessons
+
+
+def get_lesson_by_lesson_id(lesson_id: int):
+    conn = get_db_conn()
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM lessons WHERE id = ?", (lesson_id,))
+    lesson = cursor.fetchone()
+    conn.close()
+    return lesson
 
 def get_search_from_db(q: str, filters: list[str]): #Ця функція by ChatGPT
     conn = get_db_conn()

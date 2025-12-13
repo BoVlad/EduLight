@@ -9,7 +9,7 @@
     {% block head %}{% endblock %}
 </head>
 <body class="{% block body_class %}{% endblock %}">
-    <nav class="navbar navbar-light bg-light px-3">
+    <nav class="navbar navbar-light bg-light px-3 sticky-top">
         <a class="navbar-brand" href="/">
             <img src="{{ url_for('static', filename='images/EduLightLogo.png') }}" alt="" width="50" height="50">
         </a>
@@ -25,11 +25,11 @@
                         data-bs-toggle="dropdown">Категорії
                 </button>
                 <ul class="dropdown-menu p-3">
-<!--                    <li><label class="dropdown-item">-->
-<!--                        <input type="checkbox" name="filters" value="для початківців"> Для початківців-->
-<!--                    </label></li>-->
+                    <li><label class="dropdown-item">
+                        <input type="checkbox" name="filters" value="для початківців"> Для початківців
+                    </label></li>
 
-<!--                    <li><hr class="dropdown-divider"></li>-->
+                    <li><hr class="dropdown-divider"></li>
 
                     <li><label class="dropdown-item">
                         <input type="checkbox" name="filters" value="Python"> Python
@@ -58,13 +58,13 @@
 
         {% if user_logined %}
             <form class="d-flex ms-auto" method="GET">
-                <a href="/profile" class="btn btn btn-primary me-2" type="submit">Профіль</a>
+                <a href="/profile" class="btn btn-primary me-2" type="submit">Профіль</a>
     <!--            <button class="btn btn btn-primary me-2" type="submit" name="action" value="login">Вхід</button>-->
     <!--            <button class="btn btn-outline-primary" type="submit" name="action" value="register">Реєстрація</button>-->
             </form>
         {% else %}
             <form class="d-flex ms-auto" method="GET">
-                <a href="/login" class="btn btn btn-primary me-2" type="submit">Вхід</a>
+                <a href="/login" class="btn btn-primary me-2" type="submit">Вхід</a>
                 <a href="/register" class="btn btn-outline-primary" type="submit">Реєстрація</a>
     <!--            <button class="btn btn btn-primary me-2" type="submit" name="action" value="login">Вхід</button>-->
     <!--            <button class="btn btn-outline-primary" type="submit" name="action" value="register">Реєстрація</button>-->
