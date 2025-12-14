@@ -19,11 +19,7 @@
     {% endfor %}
     </ol>
     <form class="ms-auto" method="GET">
-        {% if user_logined %}
-            <button class="btn btn-primary btn-lg mb-3 w-100" type="submit" name="action" value="new_course">Пройти курс</button>
-        {% else %}
-            <a href="/register" class="btn btn-primary btn-lg mb-3 w-100" type="submit">Пройти курс</a>
-        {% endif %}
+        <button class="btn btn-primary btn-lg mb-3 w-100" type="submit" name="action" value="new_course">Пройти курс</button>
     </form>
 </div>
 {% endblock %}

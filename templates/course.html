@@ -1,43 +1,67 @@
 {% extends "base.html" %}
 
-{% block body_class %}bg3-img{% endblock %}
+{% block body_class %}bg-img{% endblock %}
 
 {% block content %}
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-12 col-md-3 sidebar p-3">
+<div class="container-fluid py-3">
+    <div class="row g-3">
+
+        <div class="col-12 col-md-3">
             <div class="accordion" id="courseAccordion">
+
                 {% for module in modules %}
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed"
-                                    data-bs-target="#module{{ module.id }}"
-                                    data-bs-toggle="collapse">
-                                {{ module.title }}
-                            </button>
-                        </h2>
-                        <div class="accordion-collapse collapse" id="module{{ module.id }}">
-                            <div class="accordion-body p-0">
-                                <div class="d-grid gap-2">
-                                    {% for lesson in lessons["module.id"] %}
-                                        <a href="/course['id']/module['id']/lesson['id']"
-                                           class="btn btn-light btn-sm">{{ lesson.title }}
-                                        </a>
-                                    {% endfor %}
-                                </div>
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header" id="heading{{ module['id'] }}">
+                        <button class="accordion-button {% if module['id'] != module_id %}collapsed{% endif %}"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#collapse{{ module['id'] }}"
+                                aria-expanded="{% if module['id'] == module_id %}true{% else %}false{% endif %}"
+                                aria-controls="collapse{{ module['id'] }}">
+                            {{ module["title"] }}
+                        </button>
+                    </h2>
+
+                    <div id="collapse{{ module['id'] }}"
+                         class="accordion-collapse collapse {% if module['id'] == module_id %}show{% endif %}"
+                         aria-labelledby="heading{{ module['id'] }}"
+                         data-bs-parent="#courseAccordion">
+
+                        <div class="accordion-body p-0">
+
+                            <div class="d-grid gap-0">
+                                {% for lesson in lessons if lesson["module_id"] == module["id"] %}
+                                    <a href="{{ url_for('course', course_id=course['id'], module_id=module['id'],
+                                            lesson_id=lesson['id']) }}"
+                                       class="btn btn-light py-2 ps-5 text-start rounded-0 border-0 border-top
+                                       {% if lesson['id'] == lesson_id %} active-lesson {% endif %}">
+                                       {{ lesson["title"] }}
+                                    </a>
+                                {% endfor %}
                             </div>
+
                         </div>
                     </div>
+                </div>
                 {% endfor %}
+
             </div>
         </div>
-        <div class="col-12 col-md-9 rounded-0 container glass-container">
-            <h1 class="mb-4 text-center">{{ course["title"] }}</h1>
-            <h3 class="text-center">{{ lesson_main.title }}</h3>
-            <div class="content">
-                {{ lesson_main.content }}
+
+        <div class="col-12 col-md-9">
+            <div class="p-4 glass-container rounded-3 shadow-sm">
+
+                <h1 class="mb-3 text-center">{{ course["title"] }}</h1>
+                <h3 class="mb-4 text-center">{{ lesson_main["title"] }}</h3>
+
+                <div class="content">
+                    {{ lesson_main["content"] | safe }}
+                </div>
+
             </div>
         </div>
+
     </div>
 </div>
 {% endblock %}

@@ -3,7 +3,7 @@ import random
 from flask import Flask, render_template, request, session, redirect, url_for
 from DB_utilts import (all_db_start, get_db_conn, check_user_in_db, add_user_to_db, get_search_from_db,
                        get_modules_by_course_id, get_course_by_id, get_user_id_by_user_email,
-                       get_lessons_by_course_module_id, get_lesson_by_lesson_id)
+                       get_lessons_by_course_id, get_lesson_by_lesson_id)
 from datetime import timedelta
 from forms import LoginForm, RegisterForm
 from session_utilts import login_required, login_forbidden, user_in_session
@@ -40,7 +40,7 @@ def course_detail(cid):
         # if get_user_is_in_course(user_id, cid):
         modules = get_modules_by_course_id(cid)
         module_id = modules[0]["id"]
-        lessons = get_lessons_by_course_module_id(cid, module_id)
+        lessons = get_lessons_by_course_id(cid)
         lesson_id = lessons[0]["id"]
         return redirect(url_for("course", course_id=cid, module_id=module_id, lesson_id=lesson_id))
     course = get_course_by_id(cid)
@@ -53,10 +53,13 @@ def course_detail(cid):
 def course(course_id, module_id, lesson_id):
     course = get_course_by_id(course_id)
     modules = get_modules_by_course_id(course_id)
-    lessons = get_lessons_by_course_module_id(course_id, module_id)
+    lessons = get_lessons_by_course_id(course_id)
     lesson_main = get_lesson_by_lesson_id(lesson_id)
-    return render_template("course.html", user_logined=user_in_session(), course=course,
-                           modules=modules, lessons=lessons, lesson_main=lesson_main)
+    return render_template(
+        "course.html", user_logined=user_in_session(),
+        course=course, modules=modules, lessons=lessons, lesson_main=lesson_main,
+        module_id=module_id, lesson_id=lesson_id
+    )
 
 @app.get("/profile")
 @login_required

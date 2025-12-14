@@ -167,14 +167,14 @@ def get_user_courses(user_id: int):
     conn.close()
     return user_courses
 
-def get_lessons_by_course_module_id(course_id: int, module_id: int):
+def get_lessons_by_course_id(course_id: int):
     conn = get_db_conn()
     cursor = conn.cursor()
-    cursor.execute("""SELECT * FROM lessons WHERE course_id = ? AND module_id = ?""",
-                   (course_id, module_id))
-    lessons = cursor.fetchall()
+    cursor.execute("SELECT * FROM lessons WHERE course_id = ? ORDER BY module_id, id", (course_id,))
+    data = cursor.fetchall()
     conn.close()
-    return lessons
+    return data
+
 
 
 def get_lesson_by_lesson_id(lesson_id: int):

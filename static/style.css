@@ -52,3 +52,13 @@
   background-color: #f8f9fa;
   border-right: 1px solid #ddd;
 }
+
+
+.active-lesson {
+    background: #0d6efd !important;
+    color: #fff !important;
+}
+
+a.btn.btn-light:hover {
+    filter: brightness(0.97);
+}
