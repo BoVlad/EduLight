@@ -1,9 +1,6 @@
 import sqlite3
 import bcrypt
 
-# conn = sqlite3.connect("my_database.db")
-# cursor = conn.cursor()
-
 def all_db_start():
     conn = sqlite3.connect('database.db')
     cursor = conn.cursor()
@@ -92,18 +89,26 @@ def get_db_conn():
     conn.execute("PRAGMA foreign_keys = ON;")
     return conn
 
+def user_exists(email: str):
+    conn = get_db_conn()
+    cursor = conn.cursor()
+    cursor.execute("SELECT 1 FROM users WHERE email = ? LIMIT 1", (email.lower(),))
+    row = cursor.fetchone()
+    conn.close()
+    return row is not None
 
 def check_user_in_db(email: str, password: str):
     conn = get_db_conn()
     cursor = conn.cursor()
     email = email.lower()
+    password = password.lower()
     cursor.execute("SELECT password_hash FROM users WHERE email = ?", (email,))
 
     password_db = cursor.fetchone()
     if password_db is None:
         return None
     password_db = password_db["password_hash"]
-    return bcrypt.checkpw(password.lower().encode('utf-8'), password_db)
+    return bcrypt.checkpw(password.encode('utf-8'), password_db)
 
 def add_user_to_db(username: str, email: str, password: str):
     conn = get_db_conn()

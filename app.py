@@ -1,9 +1,10 @@
 import random
+import sqlite3
 
 from flask import Flask, render_template, request, session, redirect, url_for
 from DB_utilts import (all_db_start, get_db_conn, check_user_in_db, add_user_to_db, get_search_from_db,
                        get_modules_by_course_id, get_course_by_id, get_user_id_by_user_email,
-                       get_lessons_by_course_id, get_lesson_by_lesson_id)
+                       get_lessons_by_course_id, get_lesson_by_lesson_id, user_exists)
 from datetime import timedelta
 from forms import LoginForm, RegisterForm
 from session_utilts import login_required, login_forbidden, user_in_session
@@ -69,7 +70,7 @@ def get_profile():
     cursor.execute("SELECT username FROM users WHERE email = ?", (session["user_email"],))
     username = cursor.fetchone()["username"]
     conn.close()
-    return render_template("profile.html", username=username)
+    return render_template("profile.html", username=username, user_logined=user_in_session())
 
 @app.post("/profile")
 @login_required
@@ -98,14 +99,14 @@ def post_register():
         username = form.username.data
         email_form = form.email.data
         password_form = form.password.data
-        check_user = check_user_in_db(email_form, password_form)
-        if check_user is None:
-            add_user_to_db(username, email_form, password_form)
-            session["user_email"] = email_form
-            return redirect(url_for("index"))
-        if check_user:
-            error = "Такий користувач вже існує!"
+        user_exist = user_exists(email_form)
+        if user_exist:
+            error = "Користувач з таким email або username вже існує!"
             return render_template('register.html', form=form, error=error)
+        if user_exist is None or not user_exist:
+            add_user_to_db(username, email_form, password_form)
+            session["user_email"] = email_form.lower()
+            return redirect(url_for("index"))
     return render_template('register.html', form=form)
 
 @app.get("/login")
@@ -123,7 +124,7 @@ def post_login():
         password_form = form.password.data
         check_user = check_user_in_db(email_form, password_form)
         if check_user:
-            session["user_email"] = email_form
+            session["user_email"] = email_form.lower()
             return redirect(url_for("index"))
         if check_user is None or not check_user:
             error = "Неправильна пошта або пароль"
